@@ -1,0 +1,17 @@
+---
+version: '3'
+
+services:
+  terraform:
+    container_name: terraform
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: dceoy/terraform:latest
+    volumes:
+      - ${PWD}:/wd
+    working_dir: /wd
+    entrypoint:
+      - /opt/tfenv/bin/terraform
+    command:
+      - --version
